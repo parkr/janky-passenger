@@ -6,6 +6,7 @@ set :linked_files, %w{.env}
 
 set :scm, :git
 
+abort "Please set your CAP_DEPLOY_HOST variable before running `cap deploy`." unless ENV.has_key?('CAP_DEPLOY_HOST')
 role :web, ENV['CAP_DEPLOY_HOST']
 role :app, ENV['CAP_DEPLOY_HOST']
 role :db,  ENV['CAP_DEPLOY_HOST']
